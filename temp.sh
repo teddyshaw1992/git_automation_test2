@@ -1,7 +1,9 @@
 #!/bin/sh
 
-if grep --quiet $1 * ; then
-	echo exists
+if (git status | grep --quiet "Changes not staged for commit"); then
+	echo "things to commit"
+elif (git status | grep --quiet "nothing to commit") ; then
+	echo "nothing to commit"
 else
-	echo not found
+	echo "James fucked up"
 fi
